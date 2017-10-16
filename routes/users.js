@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const passport = require("passport");
 const jwt = require("jsonwebtoken");
-
+const config = require("../config/database");
 const User = require('../models/user');
 
 //register
@@ -24,9 +24,9 @@ router.post('/register', (req, res, next) => {
 });
 
 //authenticate
-router.post('/athenticate', (req, res, next) => {
+router.post('/authenticate', (req, res, next) => {
     const username = req.body.username;
-    const password = req.body.passowrd;
+    const password = req.body.password;
 
     User.getUserByUsername(username, (err, user) => {
         if(err) throw err;
@@ -43,11 +43,11 @@ router.post('/athenticate', (req, res, next) => {
 
                 res.json({
                     success: true,
-                    token: 'JWT '+token,
+                    token: 'JWT '+ token,
                     user: {
                         id: user._id,
                         name: user.name,
-                        username: user.email,
+                        username: user.username,
                         email: user.email
                     }
                 });

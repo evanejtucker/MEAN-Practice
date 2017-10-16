@@ -12,7 +12,7 @@
     "body-parser": "*",
     "cors": "*",
     "express": "*",
-    "jsonwebtoken": "*",
+    "jsonwebtoken": "^7.4.3",
     "mongoose": "^4.12.2",
     "passport": "*",
     "passport-jwt": "*"
